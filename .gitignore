@@ -15,6 +15,7 @@ boundary_case_histogram.png
 # Local package preparation helpers
 prepare_standalone_packages.R
 packages-enrichment.R
+push*.bat
 
 # Internal/user-facing draft changelogs not intended for GitHub
 docs/user_changes_*.md
