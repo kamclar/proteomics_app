@@ -7,11 +7,10 @@ Shiny application for exploratory proteomics data analysis. The app supports dat
 - `app.R`: main Shiny application.
 - `modules/`: app modules for upload, imputation, exploration, DEqMS, volcano plots, enrichment, stable proteins, and comparison.
 - `docs/`: short user documentation for selected app features.
+  See `docs/imputation_methods.md` for the current imputation methods.
 - `data/reactome_cache.rds`: small Reactome mapping cache used to speed up Reactome annotations.
 - `www/`: static app assets.
 - `run_app.bat`: Windows launcher for the app.
-- `push_readme.bat`: helper script for committing and pushing README-only changes.
-- `push_changes.bat`: helper script for committing and pushing all non-ignored local changes.
 - `install_impute.bat` and `install_impute.R`: helper scripts for installing imputation packages into the local `packages/` folder.
 - `packages.R`: optional package preparation entry point.
 
@@ -32,26 +31,6 @@ You can also run the app from R:
 ```r
 shiny::runApp(".", launch.browser = TRUE, port = 3838)
 ```
-
-## Pushing README changes
-
-To commit and push only `README.md` changes to GitHub, run:
-
-```bat
-push_readme.bat
-```
-
-The script asks for a commit message and pushes to the `main` branch.
-
-## Pushing app changes
-
-To commit and push all non-ignored local changes to GitHub, run:
-
-```bat
-push_changes.bat
-```
-
-The script shows the changed files first, asks for confirmation, asks for a commit message, and pushes to the `main` branch.
 
 ## Required packages
 
