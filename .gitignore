@@ -1,0 +1,35 @@
+.Rhistory
+.RData
+.Rproj.user/
+
+# Local runtime and package cache
+R-runtime/
+packages/
+
+# Local analysis scratch files
+analyze_boundary_cases.R
+boundary_case_analysis.csv
+boundary_case_analysis.xlsx
+boundary_case_histogram.png
+
+# Local package preparation helpers
+prepare_standalone_packages.R
+packages-enrichment.R
+
+# Internal/user-facing draft changelogs not intended for GitHub
+docs/user_changes_*.md
+
+# Local experiments and ad hoc data folders
+[old_experiments]/
+[volcano]/
+Imputation/
+MS26290398_test/
+pocty chybejicich/
+data/old_experiments/
+data/volcano/
+data/Imputation.docx
+data/MS26290398_ttest.xlsx
+data/pocty_chybejicich.xlsx
+
+# Generated local caches
+data/reactome_cache.rds
