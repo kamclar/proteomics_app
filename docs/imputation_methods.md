@@ -47,8 +47,7 @@ tail of the intensity distribution.
 The app exposes `tune.sigma`, which controls the spread of the imputed MNAR
 distribution.
 
-Use it when low-intensity censoring is expected and a package-backed
-proteomics-specific method is preferred.
+Use it when low-intensity censoring is expected.
 
 ### MinProb
 
@@ -71,7 +70,7 @@ from all samples pooled together.
 
 The available backends are the same as for MNAR left-censored:
 
-- MNAR (Perseus default: width = 0.3, downshift = 1.8)
+- Perseus default: normal downshift
 - QRILC
 - MinProb
 
