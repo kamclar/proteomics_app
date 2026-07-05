@@ -1,4 +1,4 @@
-# install_impute.R
+# install_packages.R
 local_lib <- normalizePath("packages", winslash = "/", mustWork = FALSE)
 dir.create(local_lib, showWarnings = FALSE, recursive = TRUE)
 .libPaths(c(local_lib, .libPaths()))

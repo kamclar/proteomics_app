@@ -11,7 +11,7 @@ if exist "R-runtime\bin\Rscript.exe" (
   echo Nalezen: R-runtime\bin\Rscript.exe
   echo.
   
-  "R-runtime\bin\Rscript.exe" install_impute.R
+  "R-runtime\bin\Rscript.exe" install_packages.R
   
   if errorlevel 1 (
     echo.

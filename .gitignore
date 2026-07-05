@@ -13,6 +13,7 @@ boundary_case_analysis.xlsx
 boundary_case_histogram.png
 
 # Local package preparation helpers
+packages.R
 prepare_standalone_packages.R
 packages-enrichment.R
 push*.bat

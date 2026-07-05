@@ -11,8 +11,7 @@ Shiny application for exploratory proteomics data analysis. The app supports dat
 - `data/reactome_cache.rds`: small Reactome mapping cache used to speed up Reactome annotations.
 - `www/`: static app assets.
 - `run_app.bat`: Windows launcher for the app.
-- `install_impute.bat` and `install_impute.R`: helper scripts for installing imputation packages into the local `packages/` folder.
-- `packages.R`: optional package preparation entry point.
+- `install_packages.bat` and `install_packages.R`: helper scripts for installing local R packages into the `packages/` folder.
 
 The repository does not include local R package libraries, local R runtime files.
 
@@ -52,21 +51,21 @@ Core packages include:
 - `imputeLCMD`
 - `RColorBrewer`
 
-## Installing imputation packages
+## Installing local packages
 
-To install imputation packages into the local `packages/` folder, run:
+To install local packages into the `packages/` folder, run:
 
 ```bat
-install_impute.bat
+install_packages.bat
 ```
 
 or:
 
 ```bat
-R-runtime\bin\Rscript.exe install_impute.R
+R-runtime\bin\Rscript.exe install_packages.R
 ```
 
-This installs `impute` and `imputeLCMD` locally, so the imputation methods can run without using packages from a user library.
+The current script installs `impute` and `imputeLCMD` locally, so the imputation methods can run without using packages from a user library. More packages can be added to this script if needed.
 
 ## Optional enrichment packages
 
