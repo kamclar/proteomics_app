@@ -89,7 +89,7 @@ ui <- shinydashboard::dashboardPage(
       style = "padding: 10px 16px; color: #aaa; font-size: 11px; position: absolute; bottom: 0;",
       "Spectronaut -> DEqMS pipeline",
       tags$br(),
-      tags$a(href = "#", style = "color: #aaa;", "v0.4.8")
+      tags$a(href = "#", style = "color: #aaa;", "v0.4.9")
     )
   ),
 
@@ -469,7 +469,7 @@ ui <- shinydashboard::dashboardPage(
               h4("Workflow overview"),
               tags$ol(
                 tags$li(tags$b("Upload:"), " Load a Spectronaut XLSX file, preview the sheet, choose the header row, and review the auto-detected intensity, metadata, and t-test columns."),
-                tags$li(tags$b("Imputation:"), " Handle missing values. Choose MNAR (Perseus default, QRILC, or MinProb), MAR (kNN), or mixed auto-detection. Download imputed CSV."),
+                tags$li(tags$b("Imputation:"), " Handle missing values. Choose MNAR (Perseus default width 0.3, downshift 1.8), QRILC, MinProb, MAR (kNN), or mixed auto-detection. Download imputed CSV."),
                 tags$li(tags$b("Exploration:"), " QC with PCA, MDS, correlation heatmap, hierarchical clustering, and optional UMAP. Outlier detection based on within-group correlation MAD."),
                 tags$li(tags$b("DEqMS:"), " Run limma + DEqMS for selected pairwise comparisons. Mirror direction is computed instantly without re-fitting. Download all results as ZIP."),
                 tags$li(tags$b("Volcano Plotter:"), " Interactive Plotly volcano. Switch between t-test (from upload) and DEqMS results. Flip sides, adjust thresholds, export SVG."),

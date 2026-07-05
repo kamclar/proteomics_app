@@ -4,8 +4,7 @@ This note describes the imputation options currently available in the app.
 
 ## When to impute
 
-Imputation replaces missing intensity values so downstream analyses can run on a
-complete matrix. In proteomics this is useful, but it should be treated as a
+Imputation replaces missing intensity values. It should be treated as a
 modeling decision. Missing values can reflect low abundance and detection
 limits, but they can also come from acquisition, matching, preprocessing, or
 other technical effects.
@@ -25,7 +24,7 @@ and the app reports how many rows were removed.
 Use this when missing values are expected to represent low-abundance proteins
 below the detection limit. The app offers three MNAR backends.
 
-### Perseus default: normal downshift
+### MNAR (Perseus default: width = 0.3, downshift = 1.8)
 
 This is the default MNAR method. For each sample column, missing values are
 drawn from a low-intensity normal distribution:
@@ -33,9 +32,8 @@ drawn from a low-intensity normal distribution:
 - mean = observed column mean minus `downshift * observed column SD`
 - SD = `width * observed column SD`
 
-Default settings are `width = 0.3` and `downshift = 1.8`, matching the commonly
-used Perseus-style low-intensity imputation setup. Advanced settings allow both
-parameters to be adjusted.
+Default settings are `width = 0.3` and `downshift = 1.8`, matching the label
+shown in the app. Advanced settings allow both parameters to be adjusted.
 
 Use it for simple method comparison and for low-intensity missingness where a
 Perseus-compatible workflow is desired.
@@ -73,7 +71,7 @@ from all samples pooled together.
 
 The available backends are the same as for MNAR left-censored:
 
-- Perseus default: normal downshift
+- MNAR (Perseus default: width = 0.3, downshift = 1.8)
 - QRILC
 - MinProb
 

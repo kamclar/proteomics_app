@@ -52,7 +52,7 @@ mod_imputation_server <- function(id, app_state) {
                   hr(),
                   h5("MNAR settings"),
                   radioButtons(ns("mnar_backend"), "MNAR method",
-                    choices = list("Perseus default: normal downshift" = "Perseus",
+                    choices = list("MNAR (Perseus default: width = 0.3, downshift = 1.8)" = "Perseus",
                                    "QRILC (imputeLCMD)"                = "QRILC",
                                    "MinProb (imputeLCMD)"              = "MinProb"),
                     selected = "Perseus"),
@@ -136,8 +136,8 @@ mod_imputation_server <- function(id, app_state) {
                     "Method help (click to expand)"
                   ),
                   tags$dl(
-                    tags$dt("Perseus default"),
-                    tags$dd("MNAR method using the common Perseus settings: normal distribution width 0.3 and downshift 1.8. This is the default for method comparison."),
+                    tags$dt("MNAR (Perseus default: width = 0.3, downshift = 1.8)"),
+                    tags$dd("MNAR method using a low-intensity normal distribution with the common Perseus settings. This is the default for method comparison."),
                     tags$dt("QRILC"),
                     tags$dd("MNAR method for left-censored proteomics data. It imputes low missing values from the estimated left tail of the intensity distribution."),
                     tags$dt("MinProb"),
@@ -145,7 +145,7 @@ mod_imputation_server <- function(id, app_state) {
                     tags$dt("kNN"),
                     tags$dd("MAR method. Missing values are estimated from proteins with similar abundance profiles. Sparse rows are routed to the selected MNAR method."),
                     tags$dt("Mixed"),
-                    tags$dd("Classifies missingness first. MNAR cases use Perseus default, QRILC, or MinProb; MAR cases use kNN."),
+                    tags$dd("Classifies missingness first. MNAR cases use the selected MNAR method; MAR cases use kNN."),
                     tags$dt("Per group"),
                     tags$dd("Runs classification or imputation within each condition group. Useful when missingness is condition-specific.")
                   )
