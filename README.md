@@ -11,6 +11,7 @@ Shiny application for exploratory proteomics data analysis. The app supports dat
 - `www/`: static app assets.
 - `run_app.bat`: Windows launcher for the app.
 - `push_readme.bat`: helper script for committing and pushing README-only changes.
+- `push_changes.bat`: helper script for committing and pushing all non-ignored local changes.
 - `install_impute.bat` and `install_impute.R`: helper scripts for installing imputation packages into the local `packages/` folder.
 - `packages.R`: optional package preparation entry point.
 
@@ -41,6 +42,16 @@ push_readme.bat
 ```
 
 The script asks for a commit message and pushes to the `main` branch.
+
+## Pushing app changes
+
+To commit and push all non-ignored local changes to GitHub, run:
+
+```bat
+push_changes.bat
+```
+
+The script shows the changed files first, asks for confirmation, asks for a commit message, and pushes to the `main` branch.
 
 ## Required packages
 
