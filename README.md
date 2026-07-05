@@ -7,6 +7,7 @@ Shiny application for exploratory proteomics data analysis. The app supports dat
 - `app.R`: main Shiny application.
 - `modules/`: app modules for upload, imputation, exploration, DEqMS, volcano plots, enrichment, stable proteins, and comparison.
 - `docs/`: short user documentation for selected app features.
+- `data/reactome_cache.rds`: small Reactome mapping cache used to speed up Reactome annotations.
 - `www/`: static app assets.
 - `run_app.bat`: Windows launcher for the app.
 - `install_impute.bat` and `install_impute.R`: helper scripts for installing imputation packages into the local `packages/` folder.

@@ -31,5 +31,5 @@ data/Imputation.docx
 data/MS26290398_ttest.xlsx
 data/pocty_chybejicich.xlsx
 
-# Generated local caches
-data/reactome_cache.rds
+# Keep the small Reactome mapping cache in Git.
+!data/reactome_cache.rds
