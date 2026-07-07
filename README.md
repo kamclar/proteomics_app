@@ -40,8 +40,9 @@ If the computer does not have R, run:
 install_r_runtime.bat
 ```
 
-This script checks for a bundled `R-runtime/` first. If no runtime or system R
-is found, it installs R for Windows using `winget` package `RProject.R`.
+This script checks for a bundled `R-runtime/` first. If it is missing, it
+installs R for Windows into the local `R-runtime/` folder using `winget`
+package `RProject.R`.
 
 After R is installed, run:
 

@@ -16,29 +16,9 @@ if exist "%APP_DIR%R-runtime\bin\Rscript.exe" (
   exit /b 0
 )
 
-set "R_SCRIPT="
-for /f "delims=" %%R in ('where Rscript.exe 2^>nul') do (
-  if not defined R_SCRIPT set "R_SCRIPT=%%R"
-)
-
-if not defined R_SCRIPT (
-  for /f "delims=" %%D in ('dir /b /ad "%ProgramFiles%\R\R-*" 2^>nul') do (
-    if exist "%ProgramFiles%\R\%%D\bin\Rscript.exe" set "R_SCRIPT=%ProgramFiles%\R\%%D\bin\Rscript.exe"
-  )
-)
-
-if defined R_SCRIPT (
-  echo Found installed R:
-  echo %R_SCRIPT%
-  echo.
-  echo No R installation is needed.
-  pause
-  exit /b 0
-)
-
 where winget >nul 2>nul
 if errorlevel 1 (
-  echo R was not found and winget is not available.
+  echo Local R-runtime was not found and winget is not available.
   echo Install R for Windows from:
   echo https://cloud.r-project.org/bin/windows/base/
   echo.
@@ -47,11 +27,12 @@ if errorlevel 1 (
   exit /b 1
 )
 
-echo R was not found.
-echo Installing R for Windows with winget...
+echo Local R-runtime was not found.
+echo Installing R for Windows into:
+echo %APP_DIR%R-runtime
 echo.
 
-winget install --id RProject.R -e --source winget --accept-package-agreements --accept-source-agreements
+winget install --id RProject.R -e --source winget --location "%APP_DIR%R-runtime" --accept-package-agreements --accept-source-agreements
 if errorlevel 1 (
   echo.
   echo R installation failed.
@@ -61,8 +42,16 @@ if errorlevel 1 (
   exit /b 1
 )
 
+if not exist "%APP_DIR%R-runtime\bin\Rscript.exe" (
+  echo.
+  echo R installation finished, but Rscript.exe was not found in R-runtime.
+  echo Check whether winget installed R to a system location instead.
+  pause
+  exit /b 1
+)
+
 echo.
-echo R installation finished.
+echo Local R-runtime installation finished.
 echo Next steps:
 echo 1. Run install_packages.bat
 echo 2. Run run_app.bat
