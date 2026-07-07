@@ -10,8 +10,6 @@ if exist "%APP_DIR%R-runtime\bin\Rscript.exe" (
   set "R_SCRIPT=%APP_DIR%R-runtime\bin\Rscript.exe"
 ) else if exist "%APP_DIR%R-runtime\bin\x64\Rscript.exe" (
   set "R_SCRIPT=%APP_DIR%R-runtime\bin\x64\Rscript.exe"
-) else if exist "%ProgramFiles%\R\R-4.5.2\bin\Rscript.exe" (
-  set "R_SCRIPT=%ProgramFiles%\R\R-4.5.2\bin\Rscript.exe"
 ) else (
   for /f "delims=" %%R in ('where Rscript.exe 2^>nul') do (
     if not defined R_SCRIPT set "R_SCRIPT=%%R"
@@ -19,15 +17,21 @@ if exist "%APP_DIR%R-runtime\bin\Rscript.exe" (
 )
 
 if not defined R_SCRIPT (
+  for /f "delims=" %%D in ('dir /b /ad "%ProgramFiles%\R\R-*" 2^>nul') do (
+    if exist "%ProgramFiles%\R\%%D\bin\Rscript.exe" set "R_SCRIPT=%ProgramFiles%\R\%%D\bin\Rscript.exe"
+  )
+)
+
+if not defined R_SCRIPT (
   echo Could not find Rscript.exe.
-  echo Put a portable R runtime in "%APP_DIR%R-runtime" or install R and add it to PATH.
+  echo Run install_r_runtime.bat or install R for Windows.
   pause
   exit /b 1
 )
 
 if not exist "%APP_DIR%packages" (
   echo The local packages folder was not found.
-  echo Run prepare_standalone_packages.R before distributing the app.
+  echo Run install_packages.bat before starting the app.
   pause
   exit /b 1
 )

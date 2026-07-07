@@ -11,6 +11,7 @@ Shiny application for exploratory proteomics data analysis. The app supports dat
 - `data/reactome_cache.rds`: small Reactome mapping cache used to speed up Reactome annotations.
 - `www/`: static app assets.
 - `run_app.bat`: Windows launcher for the app.
+- `install_r_runtime.bat`: Windows helper script for installing R if no R runtime is available.
 - `install_packages.bat` and `install_packages.R`: helper scripts for installing local R packages into the `packages/` folder.
 
 The repository does not include local R package libraries, local R runtime files.
@@ -29,6 +30,24 @@ You can also run the app from R:
 
 ```r
 shiny::runApp(".", launch.browser = TRUE, port = 3838)
+```
+
+## Installing R
+
+If the computer does not have R, run:
+
+```bat
+install_r_runtime.bat
+```
+
+This script checks for a bundled `R-runtime/` first. If no runtime or system R
+is found, it installs R for Windows using `winget` package `RProject.R`.
+
+After R is installed, run:
+
+```bat
+install_packages.bat
+run_app.bat
 ```
 
 ## Required packages
@@ -65,7 +84,7 @@ or:
 R-runtime\bin\Rscript.exe install_packages.R
 ```
 
-The current script installs `impute` and `imputeLCMD` locally, so the imputation methods can run without using packages from a user library. More packages can be added to this script if needed.
+The current script installs the core app packages locally, including Shiny, Plotly, DEqMS, limma, `impute`, and `imputeLCMD`. Optional enrichment packages are not installed by default.
 
 ## Optional enrichment packages
 
