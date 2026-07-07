@@ -9,7 +9,13 @@ setwd(app_dir)
 
 local_lib <- file.path(app_dir, "packages")
 dir.create(local_lib, showWarnings = FALSE, recursive = TRUE)
-.libPaths(c(local_lib, .libPaths()))
+
+optional_lib <- Sys.getenv(
+  "PROTEOMICS_APP_R_LIB",
+  unset = file.path(Sys.getenv("APPDATA"), "ProteomicsApp", "R", "win-library")
+)
+dir.create(optional_lib, showWarnings = FALSE, recursive = TRUE)
+.libPaths(unique(normalizePath(c(local_lib, optional_lib, R.home("library")), winslash = "/", mustWork = FALSE)))
 
 cran_repo <- Sys.getenv("PROTEOMICS_APP_CRAN_REPO", "https://cloud.r-project.org")
 options(repos = c(CRAN = cran_repo))
@@ -68,13 +74,22 @@ cran_packages <- c(
   "dplyr",
   "zip",
   "RColorBrewer",
-  "imputeLCMD"
+  "imputeLCMD",
+  "norm",
+  "tmvtnorm",
+  "mvtnorm",
+  "gmm",
+  "sandwich",
+  "zoo"
 )
 
 bioc_packages <- c(
   "limma",
   "DEqMS",
-  "impute"
+  "impute",
+  "pcaMethods",
+  "Biobase",
+  "BiocGenerics"
 )
 
 install_cran_missing(cran_packages)
