@@ -37,6 +37,7 @@ if not exist "%APP_DIR%packages" (
 )
 
 set "PROTEOMICS_APP_R_LIB=%APPDATA%\ProteomicsApp\R\win-library"
+set "PROTEOMICS_APP_DIR=%APP_DIR%"
 set "R_LIBS_USER=%APP_DIR%packages;%PROTEOMICS_APP_R_LIB%"
 
 echo Starting ProteomicsApp...

@@ -1,5 +1,13 @@
 # install_packages.R
-local_lib <- normalizePath("packages", winslash = "/", mustWork = FALSE)
+script_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+app_dir <- if (length(script_arg)) {
+  dirname(normalizePath(sub("^--file=", "", script_arg[[1]]), winslash = "/", mustWork = FALSE))
+} else {
+  normalizePath(getwd(), winslash = "/", mustWork = FALSE)
+}
+setwd(app_dir)
+
+local_lib <- file.path(app_dir, "packages")
 dir.create(local_lib, showWarnings = FALSE, recursive = TRUE)
 .libPaths(c(local_lib, .libPaths()))
 

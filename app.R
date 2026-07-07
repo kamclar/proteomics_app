@@ -3,7 +3,14 @@
 # Main Shiny shell. The analysis steps live in modules/ so the individual
 # screens stay manageable.
 
-local_lib <- file.path(getwd(), "packages")
+app_dir <- Sys.getenv("PROTEOMICS_APP_DIR", unset = getwd())
+app_dir <- normalizePath(app_dir, winslash = "/", mustWork = FALSE)
+if (dir.exists(file.path(app_dir, "modules")) &&
+    !identical(normalizePath(getwd(), winslash = "/", mustWork = FALSE), app_dir)) {
+  setwd(app_dir)
+}
+
+local_lib <- file.path(app_dir, "packages")
 if (dir.exists(local_lib)) {
   .libPaths(c(local_lib, .libPaths()))
   message("Using local package library: ", local_lib)
@@ -89,7 +96,7 @@ ui <- shinydashboard::dashboardPage(
       style = "padding: 10px 16px; color: #aaa; font-size: 11px; position: absolute; bottom: 0;",
       "Spectronaut -> DEqMS pipeline",
       tags$br(),
-      tags$a(href = "#", style = "color: #aaa;", "v0.4.10")
+      tags$a(href = "#", style = "color: #aaa;", "v0.4.11")
     )
   ),
 
