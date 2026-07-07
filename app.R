@@ -89,7 +89,7 @@ ui <- shinydashboard::dashboardPage(
       style = "padding: 10px 16px; color: #aaa; font-size: 11px; position: absolute; bottom: 0;",
       "Spectronaut -> DEqMS pipeline",
       tags$br(),
-      tags$a(href = "#", style = "color: #aaa;", "v0.4.9")
+      tags$a(href = "#", style = "color: #aaa;", "v0.4.10")
     )
   ),
 

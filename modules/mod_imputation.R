@@ -589,7 +589,15 @@ impute_mnar_lcmd <- function(mat, method = "Perseus", q = 0.01, tune.sigma = 1,
   }
 
   if (!requireNamespace("imputeLCMD", quietly = TRUE)) {
-    stop("Package 'imputeLCMD' is required for QRILC or MinProb MNAR imputation. Install it into the app packages folder.")
+    stop(
+      paste(
+        "Package 'imputeLCMD' is required for QRILC or MinProb MNAR imputation.",
+        "Run install_packages.bat from the app folder, then restart the app.",
+        paste0("Current working directory: ", getwd()),
+        paste0("R library paths: ", paste(.libPaths(), collapse = " | ")),
+        sep = "\n"
+      )
+    )
   }
 
   res <- NULL
